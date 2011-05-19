@@ -318,6 +318,7 @@ public:
 	    preserves Character ch
 	)
     {
+	object catalyst Character ch_copy = ch;
 	case_select(self[buffer_state])
 	{
 	    case ID_OR_KEYWORD_OR_CONDITION_BS:
