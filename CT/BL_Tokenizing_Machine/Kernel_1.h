@@ -326,7 +326,27 @@ public:
 	    produces Integer& token_kind
 	)
     {
-        // Students to fill this in
+         /*!
+	requires
+	    self.ready_to_dispense = true
+	ensures
+	    token_text = ALL_BUT_LAST_OF (#self.buffer) and
+	    token_kind = WHICH_KIND (token_text) and
+	    self.buffer = LAST_OF (#self.buffer) and
+	    self.ready_to_dispense = false
+	    !*/
+      object Character last_of_buffer;
+      token_text.Clear();      
+      token_text &= self[buffer_rep];
+      
+      //token_text will have len > 0, since we're ready to dispense.
+      token_text.Remove((token_text.Length() - 1),last_of_buffer);       
+            
+      token_kind = Token_Kind(self[buffer_state], token_text);
+      self[buffer_state] = Buffer_Type(last_of_buffer);
+
+      //self[buffer_rep] gets LAST_OF(buffer_rep)
+      self[buffer_rep].Add(0, last_of_buffer);
     }
 
     procedure_body Flush_A_Token (
@@ -338,6 +358,7 @@ public:
 
       token_kind = Token_Kind(self[buffer_state], self[buffer_rep]);
       self[buffer_rep] &= token_text;
+      self[buffer_state] = EMPTY_BS;
     }
 
     function_body Boolean Is_Ready_To_Dispense ()
