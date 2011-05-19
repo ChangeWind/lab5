@@ -389,6 +389,7 @@ public:
 	
 	//self[buffer_rep] gets LAST_OF(buffer_rep)
 	self[buffer_rep].Add(0, last_of_buffer);
+	self[token_ready] = false;
     }
 
     procedure_body Flush_A_Token (
