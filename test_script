@@ -1,0 +1,4 @@
+Tokenizing_Machine_Test < input/TestProgram.bl > output/Mine_Tokenized
+321_Tokenizing_Machine_Demo < input/TestProgram.bl > output/321_Tokenized
+
+diff output/Mine_Tokenized output/321_Tokenized

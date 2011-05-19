@@ -1,0 +1,127 @@
+Running the test case . . .
+
+TOKEN KIND      TOKEN TEXT
+----------      ----------
+KEYWORD         <PROGRAM>
+WHITE_SPACE     < >
+IDENTIFIER      <TestProgram>
+WHITE_SPACE     < >
+KEYWORD         <IS>
+WHITE_SPACE     <
+
+    >
+KEYWORD         <INSTRUCTION>
+WHITE_SPACE     < >
+IDENTIFIER      <FindObstacle>
+WHITE_SPACE     < >
+KEYWORD         <IS>
+WHITE_SPACE     <
+        >
+KEYWORD         <WHILE>
+ERROR           <!>
+WHITE_SPACE     < >
+CONDITION       <next-is-empty>
+WHITE_SPACE     < >
+KEYWORD         <DO>
+WHITE_SPACE     <
+            >
+IDENTIFIER      <move>
+WHITE_SPACE     <
+        >
+KEYWORD         <END>
+WHITE_SPACE     < >
+KEYWORD         <WHILE>
+WHITE_SPACE     <
+    >
+KEYWORD         <END>
+WHITE_SPACE     < >
+IDENTIFIER      <FindObstacle>
+WHITE_SPACE     <
+
+>
+KEYWORD         <BEGIN>
+WHITE_SPACE     <   >
+COMMENT         <# TestProgram1>
+WHITE_SPACE     <
+    >
+KEYWORD         <WHILE>
+WHITE_SPACE     < >
+CONDITION       <true>
+WHITE_SPACE     < >
+KEYWORD         <DO>
+WHITE_SPACE     <
+        >
+IDENTIFIER      <FindObstacle>
+WHITE_SPACE     <
+        >
+KEYWORD         <IF>
+WHITE_SPACE     < >
+CONDITION       <next-is-enemy>
+WHITE_SPACE     < >
+KEYWORD         <THEN>
+WHITE_SPACE     <
+            >
+IDENTIFIER      <infect>
+WHITE_SPACE     <
+        >
+KEYWORD         <ELSE>
+WHITE_SPACE     <
+            >
+KEYWORD         <IF>
+WHITE_SPACE     < >
+CONDITION       <next-is-wall>
+WHITE_SPACE     < >
+KEYWORD         <THEN>
+WHITE_SPACE     <
+                >
+KEYWORD         <IF>
+WHITE_SPACE     < >
+CONDITION       <random>
+WHITE_SPACE     < >
+KEYWORD         <THEN>
+WHITE_SPACE     <
+                    >
+IDENTIFIER      <turnleft>
+WHITE_SPACE     <
+                >
+KEYWORD         <ELSE>
+WHITE_SPACE     <
+                    >
+IDENTIFIER      <turnright>
+WHITE_SPACE     <
+                >
+KEYWORD         <END>
+WHITE_SPACE     < >
+KEYWORD         <IF>
+WHITE_SPACE     <
+            >
+KEYWORD         <ELSE>
+WHITE_SPACE     <   >
+COMMENT         <# next-is-friend>
+WHITE_SPACE     <
+                >
+IDENTIFIER      <skip>
+WHITE_SPACE     <
+            >
+KEYWORD         <END>
+WHITE_SPACE     < >
+KEYWORD         <IF>
+WHITE_SPACE     <
+        >
+KEYWORD         <END>
+WHITE_SPACE     < >
+KEYWORD         <IF>
+WHITE_SPACE     <
+    >
+KEYWORD         <END>
+WHITE_SPACE     < >
+KEYWORD         <WHILE>
+WHITE_SPACE     <
+>
+KEYWORD         <END>
+WHITE_SPACE     < >
+IDENTIFIER      <TestProgram>
+WHITE_SPACE     <
+>
+
+Test case completed.
