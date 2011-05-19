@@ -318,7 +318,58 @@ public:
 	    preserves Character ch
 	)
     {
-        // Students to fill this in
+	case_select(self[buffer_state])
+	{
+	    case ID_OR_KEYWORD_OR_CONDITION_BS:
+	    {
+		if(not Is_Identifier_Character(ch))
+		{
+		    self[token_ready] = true;
+		}
+	    }
+	    break;
+	    
+	    case WHITE_SPACE_BS:
+	    {
+		if(not Is_White_Space_Character(ch))
+		{
+		    self[token_ready] = true; 
+		}
+	    }
+	    break;
+	    
+	    case COMMENT_BS:
+	    {
+		if(ch == '\n')
+		{
+		    self[token_ready] = true; 	
+		}
+	    }
+	    break;
+	    
+	    case ERROR_BS:
+	    {
+		if(Can_Start_Token(ch))
+		{
+		    self[token_ready] = true;
+		}
+	    }
+	    break;
+	    case EMPTY_BS:
+	    {
+		self[buffer_state] = Buffer_Type(ch);
+	    }
+	    break;
+	}
+	if(Can_Start_Token(ch))
+	{
+	    object Character ch_copy = ch;
+	    if(Buffer_Type(ch) != self[buffer_state])
+	    {
+		self[token_ready] = true;
+	    }
+	    self[buffer_rep].Add(self[buffer_rep].Length(), ch_copy);
+	}
     }
     
     procedure_body Dispense (
@@ -326,27 +377,18 @@ public:
 	    produces Integer& token_kind
 	)
     {
-         /*!
-	requires
-	    self.ready_to_dispense = true
-	ensures
-	    token_text = ALL_BUT_LAST_OF (#self.buffer) and
-	    token_kind = WHICH_KIND (token_text) and
-	    self.buffer = LAST_OF (#self.buffer) and
-	    self.ready_to_dispense = false
-	    !*/
-      object Character last_of_buffer;
-      token_text.Clear();      
-      token_text &= self[buffer_rep];
-      
-      //token_text will have len > 0, since we're ready to dispense.
-      token_text.Remove((token_text.Length() - 1),last_of_buffer);       
-            
-      token_kind = Token_Kind(self[buffer_state], token_text);
-      self[buffer_state] = Buffer_Type(last_of_buffer);
-
-      //self[buffer_rep] gets LAST_OF(buffer_rep)
-      self[buffer_rep].Add(0, last_of_buffer);
+	object Character last_of_buffer;
+	token_text.Clear();      
+	token_text &= self[buffer_rep];
+	
+	//token_text will have len > 0, since we're ready to dispense.
+	token_text.Remove((token_text.Length() - 1),last_of_buffer);       
+	
+	token_kind = Token_Kind(self[buffer_state], token_text);
+	self[buffer_state] = Buffer_Type(last_of_buffer);
+	
+	//self[buffer_rep] gets LAST_OF(buffer_rep)
+	self[buffer_rep].Add(0, last_of_buffer);
     }
 
     procedure_body Flush_A_Token (
@@ -354,23 +396,23 @@ public:
 	    produces Integer& token_kind
 	)
     {
-      token_text.Clear();
-
-      token_kind = Token_Kind(self[buffer_state], self[buffer_rep]);
-      self[buffer_rep] &= token_text;
-      self[buffer_state] = EMPTY_BS;
+	token_text.Clear();
+	
+	token_kind = Token_Kind(self[buffer_state], self[buffer_rep]);
+	self[buffer_rep] &= token_text;
+	self[buffer_state] = EMPTY_BS;
     }
 
     function_body Boolean Is_Ready_To_Dispense ()
     {        
-      return self[token_ready];
+	return self[token_ready];
     }
-
+    
     function_body Integer Size ()
     {
-      return self[buffer_rep].Length();
+	return self[buffer_rep].Length();
     }
-
+    
 };
 
 #endif // CT_BL_TOKENIZING_MACHINE_KERNEL_1
