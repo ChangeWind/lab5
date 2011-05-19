@@ -356,12 +356,16 @@ public:
 		}
 	    }
 	    break;
+	    
 	    case EMPTY_BS:
 	    {
 		self[buffer_state] = Buffer_Type(ch);
 	    }
 	    break;
 	}
+
+	// No matter which case, we will add the character to
+	// our buffer.
 	self[buffer_rep].Add(self[buffer_rep].Length(), ch_copy);
 	
     }

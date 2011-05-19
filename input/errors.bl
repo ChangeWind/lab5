@@ -1,0 +1,21 @@
+PROGRAM 2TestProgram IS
+
+    INSTRUCTION #$#$13234$
+    WHILE true3 DO
+        FindObstacle
+        IF next-is-enemy THEN
+            infect
+        ELSE
+            IF next-is-wall THEN
+                IF random THEN$
+                    turnleft
+                ELSE
+                    turnright
+		    Undefi$nedInstruction
+                END IF
+            ELSE   # next-is-friend
+                skip
+            END$ IF
+        END IF
+    END WHILE
+END TestProgram

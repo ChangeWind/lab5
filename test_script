@@ -1,4 +1,25 @@
-Tokenizing_Machine_Test < input/TestProgram.bl > output/Mine_Tokenized
-321_Tokenizing_Machine_Demo < input/TestProgram.bl > output/321_Tokenized
+echo "------------------------------------"
+echo "    Testing Tokenizing_Machine      "
+echo "------------------------------------"
+echo "\n"
+ 
+echo "Testing TestProgram"
+Tokenizing_Machine_Test < input/works.bl > output/mine_works
+321_Tokenizing_Machine_Demo < input/works.bl > output/321_works
+diff output/mine_works output/321_works
+
+
+echo "\n"
+echo "Testing Long Program (LilBug2)"
+Tokenizing_Machine_Test < input/long_works.bl > output/mine_long_works
+321_Tokenizing_Machine_Demo < input/long_works.bl > output/321_long_works
+diff output/mine_long_works output/321_long_works
+
+
+echo "\n"
+echo "Testing Program with Errors"
+Tokenizing_Machine_Test < input/errors.bl > output/mine_errors
+321_Tokenizing_Machine_Demo < input/errors.bl > output/321_errors
+diff output/mine_errors output/321_errors
 
 diff output/Mine_Tokenized output/321_Tokenized

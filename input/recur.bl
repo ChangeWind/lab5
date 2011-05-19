@@ -1,8 +1,9 @@
 PROGRAM TestProgram IS
 
     INSTRUCTION FindObstacle IS
-        WHILE! next-is-empty DO
+        WHILE next-is-empty DO
             move
+	    FindObstacle
         END WHILE
     END FindObstacle
 
