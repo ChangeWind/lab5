@@ -334,17 +334,20 @@ public:
 	    produces Integer& token_kind
 	)
     {
-        // Students to fill this in
+      token_text.Clear();
+
+      token_kind = Token_Kind(self[buffer_state], self[buffer_rep]);
+      self[buffer_rep] &= token_text;
     }
 
     function_body Boolean Is_Ready_To_Dispense ()
-    {
-        // Students to fill this in
+    {        
+      return self[token_ready];
     }
 
     function_body Integer Size ()
     {
-        // Students to fill this in
+      return self[buffer_rep].Length();
     }
 
 };
