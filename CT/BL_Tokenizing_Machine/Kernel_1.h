@@ -361,15 +361,8 @@ public:
 	    }
 	    break;
 	}
-	if(Can_Start_Token(ch))
-	{
-	    object Character ch_copy = ch;
-	    if(Buffer_Type(ch) != self[buffer_state])
-	    {
-		self[token_ready] = true;
-	    }
-	    self[buffer_rep].Add(self[buffer_rep].Length(), ch_copy);
-	}
+	self[buffer_rep].Add(self[buffer_rep].Length(), ch_copy);
+	
     }
     
     procedure_body Dispense (
